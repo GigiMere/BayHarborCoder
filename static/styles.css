@@ -1,0 +1,45 @@
+/* Dark theme base */
+body.hero{
+  min-height:100vh;
+  background:#0b1020;   /* dark navy */
+  color:#f4f6ff;        /* near-white */
+}
+
+/* Glass cards */
+.glass{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:16px;
+}
+
+/* Navbar – high contrast */
+.navbar{ background:rgba(10,10,20,0.92)!important; }
+.navbar .navbar-brand{ color:#fff!important; }
+.navbar .nav-link{ color:#c9d3ee!important; }
+.navbar .nav-link.active,.navbar .nav-link:hover{ color:#fff!important; }
+
+/* Buttons */
+.btn-primary{ background:#2563eb; border-color:#2563eb; }
+.btn-outline-light{ color:#e5ecff; border-color:#8aa2ff; }
+.btn-outline-light:hover{ background:#8aa2ff; color:#0b1020; border-color:#8aa2ff; }
+
+/* Muted text – brighten so it's readable on dark */
+.text-muted,.form-text,small,.small{ color:#b8c2e0!important; }
+
+/* Tables */
+.table-glass{
+  background: rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.table{ color:#eaf0ff; }
+.table thead th{ color:#ffffff; }
+.table.table-dark{ --bs-table-bg: rgba(255,255,255,0.04); --bs-table-striped-bg: rgba(255,255,255,0.08); }
+
+/* Leaflet */
+.leaflet-container{ border-radius:12px; }
+
+/* Helpers */
+.display-4{ color:#ffffff; }
+.ratio img{ object-fit: cover; }

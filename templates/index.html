@@ -1,0 +1,48 @@
+{% extends "_base.html" %}
+{% set page="weather" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-10">
+    <div class="glass p-4">
+      <h3 class="mb-4">Check out the weather today</h3>
+
+      <form id="weatherForm" class="row g-3 align-items-end">
+        <div class="col-sm-6 col-md-3">
+          <label class="form-label">Choose the date</label>
+          <input id="date" name="date" type="date" class="form-control" required>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+          <label class="form-label">Latitude</label>
+          <input id="lat" name="lat" type="number" step="0.0001" class="form-control" value="40.7128">
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label class="form-label">Longitude</label>
+          <input id="lon" name="lon" type="number" step="0.0001" class="form-control" value="-74.0060">
+        </div>
+
+        <div class="col-md-3 text-md-end">
+          <button class="btn btn-primary w-100" type="submit">Update</button>
+        </div>
+      </form>
+
+      <div id="alertBox" class="alert alert-danger mt-3 d-none"></div>
+
+      <div class="row g-4 align-items-center mt-2">
+        <div class="col-md-6 text-center">
+          <img id="todayPng" alt="weather" class="d-block mx-auto mb-3" style="width:160px;height:160px;">
+          <div id="todayTemp" class="display-4 fw-bold">—</div>
+          <div class="text-muted small" id="locLabel"></div>
+        </div>
+        <div class="col-md-6">
+          <div class="fw-semibold mb-2">Click the map to change location</div>
+          <div id="map" class="rounded overflow-hidden" style="height:360px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='weather.js') }}"></script>
+{% endblock %}

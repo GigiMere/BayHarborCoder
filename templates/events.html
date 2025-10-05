@@ -1,0 +1,57 @@
+{% extends "_base.html" %}
+{% set page="events" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-10">
+    <div class="glass p-4">
+      <h3 class="mb-3">Plan Events with Weather</h3>
+
+      <form id="eventForm" class="row g-3 align-items-end">
+        <div class="col-md-5">
+          <label class="form-label">Title</label>
+          <input name="title" class="form-control" placeholder="Picnic, Parade, Football..." required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Date</label>
+          <input name="date" type="date" class="form-control" required>
+        </div>
+        <div class="col-md-3 d-grid">
+          <button class="btn btn-primary" type="submit">Add</button>
+        </div>
+        <input type="hidden" name="lat" id="evt_lat" value="40.7128">
+        <input type="hidden" name="lon" id="evt_lon" value="-74.0060">
+      </form>
+
+      <div class="row mt-3 g-3">
+        <div class="col-md-6">
+          <div class="fw-semibold mb-2">Pick event location (click the map)</div>
+          <div id="evt_map" class="rounded overflow-hidden" style="height:300px;"></div>
+          <div class="small text-muted mt-2">
+            Selected: <span id="evt_loc_lbl">Lat 40.7128, Lon -74.0060</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive table-glass mt-3">
+        <table class="table table-dark table-striped align-middle mb-0" id="eventsTable">
+          <thead>
+            <tr>
+              <th>Title</th><th>Location</th><th>Date</th><th>Temp</th><th>Precip</th><th>Risk</th><th class="text-end">Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="small text-muted mt-2">This page is open (no login) per your request.</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='events.js') }}"></script>
+<script>
+  const d = document.querySelector('input[name="date"]');
+  if(d && !d.value){ d.value = new Date().toISOString().slice(0,10); }
+</script>
+{% endblock %}
